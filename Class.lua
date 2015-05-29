@@ -1,10 +1,7 @@
 --[[
 	This file is part of Gunigine game engine and also part of Gunlock game projects.
 	
-	https://github.com/shell64
-	http://youtube.com/shellll32
 	http://playgunlock.com
-	http://twitter.com/gunlockofficial
 	
 	This code (Gunigine's Class System) is licensed under the MIT Open Source License.
 	
