@@ -36,14 +36,18 @@ Quick Usage
   Pet = Class.New("Pet")
   Pet.Inherit(Human) -- Inherit all init values, functions and stuff from Human class.
   
+  Pet.GetSet("Owner", "table")
+  
   --IsSetIs are state like IsAlive but you can still set the value of it like SetIsAlive(false)
   Pet.IsSetIs("Cat", "boolean", false)
   
   local Cat = Pet.New()
   Cat:SetIsCat(true)
+  Cat:SetOwner(Alex)
   
-  print(Cat:IsCat())
-  print(Cat:GetName())
+  print("Is Cat: " .. Cat:IsCat())
+  print("Cat's Name: " .. Cat:GetName())
+  print("Cat's Owner's Name: " .. Cat:GetOwner():GetName())
 ```
 
 Documentation
