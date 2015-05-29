@@ -40,7 +40,6 @@ local Vector2 = Vector2
 local Pairs = pairs or Pairs
 local ToString = tostring or ToString
 local SetMetatable = setmetatable or SetMetatable
-local ValueType = ValueType
 
 --Padrões | Defaults
 local EmptyTable = {}
