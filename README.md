@@ -34,7 +34,7 @@ Quick Usage
   
   --Create a different class for a pet.
   Pet = Class.New("Pet")
-  Pet.Inherits(Human) -- Inherit all init values, functions and stuff from Human class.
+  Pet.Inherit(Human) -- Inherit all init values, functions and stuff from Human class.
   
   --IsSetIs are state like IsAlive but you can still set the value of it like SetIsAlive(false)
   Pet.IsSetIs("Cat", "boolean", false)
