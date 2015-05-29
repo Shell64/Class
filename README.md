@@ -43,7 +43,7 @@ Quick Usage
   Cat:SetIsCat(true)
   
   print(Cat:IsCat())
-  print(Cat:Name())
+  print(Cat:GetName())
 ```
 
 Documentation
