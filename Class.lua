@@ -62,6 +62,20 @@ function Class.New(Name)
 	SuperClass.InitTypes = {}
 	
 	----------------------------------------------------------------------------------
+	-- Retorna o objeto classe do objeto
+	-- Return the class object from a object
+	function SuperClass.GetClass(Object)
+		return SuperClass
+	end
+	
+	----------------------------------------------------------------------------------
+	-- Altera a classe de um objeto
+	-- Set the class for a object
+	function SuperClass.SetClass(Object, Class)
+		SetMetatable(Object, Class)
+	end
+	
+	----------------------------------------------------------------------------------
 	-- Cria um novo objeto utilizando a classe.
 	-- Create a new object using a following class.
 	function SuperClass.New(...)
