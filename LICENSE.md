@@ -2,16 +2,16 @@
 
 This file is part of Gunigine game engine and also part of Gunlock game projects.
 	
-https://github.com/shell64 [GitHub]
-http://youtube.com/shellll32 [YouTube]
-http://playgunlock.com [Gunlock]
-http://twitter.com/gunlockofficial [Twitter]
+[https://github.com/shell64] [GitHub]
+[http://youtube.com/shellll32] [YouTube]
+[http://playgunlock.com] [Gunlock]
+[http://twitter.com/gunlockofficial] [Twitter]
 
 This code (Gunigine's Class System) is licensed under the MIT Open Source License.
 
 The MIT License (MIT)
 
-Copyright (c) 2015 Leandro Teixeira da Fonseca - leandro-456@live.com - playgunlock.com
+Copyright (c) 2015 Leandro Teixeira da Fonseca - leandro-456@live.com - [playgunlock.com] [Gunlock]
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
