@@ -6,7 +6,7 @@ __Gunigine's Class Library__ is a simple and powerful OOP Library for Lua. Initi
 Quick Usage
 ===========
 ```lua
-  require("Class")
+  Class = require("Class")
 
   --Create a new class.
   Human = Class.New("Human") --create a new class called Human

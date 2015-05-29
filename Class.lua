@@ -28,9 +28,7 @@
 	THE SOFTWARE.
 ]]--
 
-Class = {}
-
-local Class = Class
+local Class = {}
 
 local Vector2 = Vector2
 
@@ -295,3 +293,5 @@ function Class.New(Name)
 	
 	return SuperClass
 end
+
+return Class
