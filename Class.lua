@@ -3,7 +3,7 @@
 	
 	http://playgunlock.com
 	
-	This code (Gunigine's Class System) is licensed under the MIT Open Source License.
+	This code (Gunigine's Class Library) is licensed under the MIT Open Source License.
 	
 	The MIT License (MIT)
 
