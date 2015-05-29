@@ -45,7 +45,7 @@ Quick Usage
   Cat:SetIsCat(true)
   Cat:SetOwner(Alex)
   
-  print("Is Cat: " .. Cat:IsCat())
+  print("Is Cat: " .. tostring(Cat:IsCat()))
   print("Cat's Name: " .. Cat:GetName())
   print("Cat's Owner's Name: " .. Cat:GetOwner():GetName())
 ```
