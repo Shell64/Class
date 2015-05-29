@@ -57,7 +57,7 @@ Quick Usage
 
 Documentation
 ===========
-Documentation is not avaiable yet.
+Documentation is not avaiable yet, but the whole code is docummented as LuaDoc style.
 
 License
 ===========
