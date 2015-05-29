@@ -1,12 +1,49 @@
 # GunigineClass
 ===========
 
-__Gunigine's Class System__ is simple and powerful OOP Library for Lua. Initially developed for my closed project (Gunigine), is now open!
+__Gunigine's Class System__ is a simple and powerful OOP Library for Lua. Initially developed for my closed project (Gunigine), is now open!
 
 Quick Usage
 ===========
 ```lua
-
+  require("Class")
+  
+  --Create a new class.
+  Human = Class.New("Human") --create a new class called Human
+  
+  --Create the Gets and Sets
+  Human.GetSet("Name", "string", "No name")
+  Human.GetSet("Height", "number", 1.75)
+  Human.GetSet("Weight", "number", 65)
+ 
+ --Create Is states like, Object:IsAlive()
+  Human.Is("Alive", "boolean", true)
+  Human.Is("Human", "boolean", true) --this is redundant because Class.New do that already.
+  
+  --Create a object using Human class
+  local Alex = Human.New()
+  
+  Alex:SetName("Alex")
+  Alex:SetHeight(1.8)
+  Alex:SetWeight(72)
+  
+  print("Name: " .. Alex:GetName())
+  print("Height: " .. Alex:GetHeight() .. "m")
+  print("Weight: " .. Alex:GetWeight() .. "kg")
+  
+  
+  --Create a different class for a pet.
+  Pet = Class.New("Pet")
+  Pet.Inherits(Human) -- Inherit all init values, functions and stuff from Human class.
+  
+  --IsSetIs are state like IsAlive but you can still set the value of it like SetIsAlive(false)
+  Pet.IsSetIs("Cat", "boolean", false)
+  
+  local Cat = Pet.New()
+  Cat:SetIsCat(true)
+  
+  print(Cat:IsCat())
+  print(Cat:Name())
 ```
 
 Documentation
