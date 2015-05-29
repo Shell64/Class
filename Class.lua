@@ -63,14 +63,14 @@ function Class.New(Name)
 	
 	----------------------------------------------------------------------------------
 	-- Retorna o objeto classe do objeto
-	-- Return the class object from a object
+	-- Return the class object from an object
 	function SuperClass.GetClass(Object)
 		return SuperClass
 	end
 	
 	----------------------------------------------------------------------------------
 	-- Altera a classe de um objeto
-	-- Set the class for a object
+	-- Set the class for an object
 	function SuperClass.SetClass(Object, Class)
 		SetMetatable(Object, Class)
 	end
@@ -93,7 +93,7 @@ function Class.New(Name)
 	
 	----------------------------------------------------------------------------------
 	-- Inicializa os valores de um objeto. (Nota: Esta função não deve ser sobrescrita, utilize Class.PostInit ao invés, ou extend.)
-	-- Initializes the values of a object. (Note: This function might not be overrided, use Class.PostInit instead, or Extend.)
+	-- Initializes the values of an object. (Note: This function might not be overrided, use Class.PostInit instead, or Extend.)
 	function SuperClass.Init(Object, ...)
 		for Key, Value in Pairs(Object.InitValues) do
 			if Object.InitTypes[Key] == "vector2" or Object.InitTypes[Key] == "color" then
