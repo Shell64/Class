@@ -37,9 +37,9 @@ local Class = Class
 
 local Vector2 = Vector2
 
-local Pairs = Pairs
-local ToString = ToString
-local SetMetatable = SetMetatable
+local Pairs = pairs or Pairs
+local ToString = tostring or ToString
+local SetMetatable = setmetatable or SetMetatable
 local ValueType = ValueType
 
 --Padrões | Defaults
