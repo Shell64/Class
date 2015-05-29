@@ -1,7 +1,7 @@
 # GunigineClass
 ===========
 
-__Gunigine's Class System__ is a simple and powerful OOP Library for Lua. Initially developed for my closed project (Gunigine), is now open!
+__Gunigine's Class Library__ is a simple and powerful OOP Library for Lua. Initially developed for my closed project (Gunigine), is now open!
 
 Quick Usage
 ===========
