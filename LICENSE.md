@@ -1,11 +1,6 @@
 #Gunigine's Class System
 
 This file is part of Gunigine game engine and also part of Gunlock game projects.
-	
-[github.com/shell64][GitHub]<br />
-[youtube.com/shellll32][YouTube]<br />
-[Gunlock][Gunlock]<br />
-[twitter.com/gunlockofficial][Twitter]<br />
 
 This code (Gunigine's Class System) is licensed under the MIT Open Source License.
 
