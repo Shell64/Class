@@ -7,44 +7,49 @@ Quick Usage
 ===========
 ```lua
   require("Class")
-  
+
   --Create a new class.
   Human = Class.New("Human") --create a new class called Human
-  
+
   --Create the Gets and Sets
   Human.GetSet("Name", "string", "No name")
   Human.GetSet("Height", "number", 1.75)
   Human.GetSet("Weight", "number", 65)
- 
+
  --Create Is states like, Object:IsAlive()
   Human.Is("Alive", "boolean", true)
   Human.Is("Human", "boolean", true) --this is redundant because Class.New do that already.
-  
+  Human.Is("PROgrammer", "boolean", true)
+
   --Create a object using Human class
   local Alex = Human.New()
-  
+
   Alex:SetName("Alex")
   Alex:SetHeight(1.8)
   Alex:SetWeight(72)
-  
+
+  print("Human properties: ")
   print("Name: " .. Alex:GetName())
   print("Height: " .. Alex:GetHeight() .. "m")
   print("Weight: " .. Alex:GetWeight() .. "kg")
-  
-  
+  print("Is Alive: " .. tostring(Alex:IsAlive()))
+  print("Is Human: " .. tostring(Alex:IsHuman()))
+  print("Is PROgrammer: " .. tostring(Alex:IsPROgrammer()))
+
   --Create a different class for a pet.
   Pet = Class.New("Pet")
   Pet.Inherit(Human) -- Inherit all init values, functions and stuff from Human class.
-  
+
   Pet.GetSet("Owner", "table")
-  
+
   --IsSetIs are state like IsAlive but you can still set the value of it like SetIsAlive(false)
   Pet.IsSetIs("Cat", "boolean", false)
-  
+
   local Cat = Pet.New()
   Cat:SetIsCat(true)
   Cat:SetOwner(Alex)
-  
+
+  print("\nPet properties: ")
   print("Is Cat: " .. tostring(Cat:IsCat()))
   print("Cat's Name: " .. Cat:GetName())
   print("Cat's Owner's Name: " .. Cat:GetOwner():GetName())
