@@ -21,7 +21,7 @@ Quick Usage
   Human.Is("Human", "boolean", true) --this is redundant because Class.New do that already.
   Human.Is("PROgrammer", "boolean", true)
 
-  --Create a object using Human class
+  --Create an object using Human class
   local Alex = Human.New()
 
   Alex:SetName("Alex")
