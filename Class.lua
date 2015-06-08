@@ -32,6 +32,7 @@ local Class = {}
 
 local Vector2 = Vector2
 
+local Type = type or Type
 local Pairs = pairs or Pairs
 local ToString = tostring or ToString
 local SetMetatable = setmetatable or SetMetatable
@@ -98,6 +99,17 @@ function Class.New(Name)
 				Object[Key] = Value:Copy()
 			elseif Object.InitTypes[Key] == "table" then
 				Object[Key] = {}
+				
+				if Object.InitValues[Key] ~= EmptyTable then
+					for Key2, Value2 in Pairs(Object.InitValues[Key]) do
+						if Type(Value2) == "table" then
+							Object[Key][Key2] = {}
+						else
+							Object[Key][Key2] = Value2
+						end
+						Object[Key][Key2] = Value2
+					end
+				end
 			else
 				Object[Key] = Value
 			end
@@ -111,29 +123,29 @@ function Class.New(Name)
 		if not Property then
 			if not IsOnly then
 				if Is then
-					SuperClass["Is" .. Name] = function(c)
-						return c[Name]
+					SuperClass["Is" .. Name] = function(Object)
+						return Object[Name]
 					end
 					
-					SuperClass["SetIs" .. Name] = function(c, x)
-						c[Name] = x
+					SuperClass["SetIs" .. Name] = function(Object, x)
+						Object[Name] = x
 					end
 				else
 					if not SetOnly then
-						SuperClass["Get" .. Name] = function(c)
-							return c[Name]
+						SuperClass["Get" .. Name] = function(Object)
+							return Object[Name]
 						end
 					end
 					
 					if not GetOnly then
-						SuperClass["Set" .. Name] = function(c, x)
-							c[Name] = x
+						SuperClass["Set" .. Name] = function(Object, x)
+							Object[Name] = x
 						end
 					end
 				end
 			else
-				SuperClass["Is" .. Name] = function(c)
-					return c[Name]
+				SuperClass["Is" .. Name] = function(Object)
+					return Object[Name]
 				end
 			end
 		end
@@ -231,7 +243,9 @@ function Class.New(Name)
 			SuperClass.InitValues[Key] = Value
 		end
 		for Key, Value in Pairs(Class2) do
-			SuperClass[Key] = SuperClass[Key] or Value
+			if Type(Key) == "string" and Key ~= "__index" then
+				SuperClass[Key] = SuperClass[Key] or Value
+			end
 		end
 	end
 	
