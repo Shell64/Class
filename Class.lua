@@ -95,7 +95,7 @@ function Class.New(Name)
 	-- Initializes the values of an object. (Note: This function might not be overrided, use Class.PostInit instead, or Extend.)
 	function SuperClass.Init(Object, ...)
 		for Key, Value in Pairs(Object.InitValues) do
-			if Object.InitTypes[Key] == "vector2" or Object.InitTypes[Key] == "color" then
+			if Object.InitTypes[Key] == "vector2" or Object.InitTypes[Key] == "vector3" or Object.InitTypes[Key] == "color" then
 				Object[Key] = Value:Copy()
 			elseif Object.InitTypes[Key] == "table" then
 				Object[Key] = {}
@@ -173,6 +173,10 @@ function Class.New(Name)
 		elseif ValueType == "vector2" then
 			SuperClass.InitValues[Name] = Value or Vector2.Zero()
 			SuperClass.InitTypes[Name] = ValueType
+			
+		elseif ValueType == "vector3" then
+			SuperClass.InitValues[Name] = Value or Vector3.Zero()
+			SuperClass.InitTypes[Name] = ValueType
 		
 		elseif ValueType == "color" then
 			SuperClass.InitValues[Name] = Value or Color2.White()
@@ -192,6 +196,10 @@ function Class.New(Name)
 			
 		elseif ValueType == "model" then
 			SuperClass.InitValues[Name] = Value or Model.New("default/error")
+			SuperClass.InitTypes[Name] = ValueType
+			
+		elseif ValueType == "font" then
+			SuperClass.InitValues[Name] = Value or Font.NewCached(Font.GetDefaultFontName(), 18, true)
 			SuperClass.InitTypes[Name] = ValueType
 			
 		elseif ValueType == "nil" then
@@ -241,9 +249,10 @@ function Class.New(Name)
 	function SuperClass.Inherit(Class2)
 		for Key, Value in Pairs(Class2.InitValues) do
 			SuperClass.InitValues[Key] = Value
+			SuperClass.InitTypes[Key] = Class2.InitTypes[Key]
 		end
 		for Key, Value in Pairs(Class2) do
-			if Type(Key) == "string" and Key ~= "__index" then
+			if Type(Key) == "string" and Key:Substring(1, 2) ~= "__" then
 				SuperClass[Key] = SuperClass[Key] or Value
 			end
 		end
@@ -300,6 +309,19 @@ function Class.New(Name)
 		SuperClass[Name] = function(...)
 			Func(...)
 			Func2(...)
+		end
+	end
+	
+	----------------------------------------------------------------------------------
+	-- Extende uma função, essa função é executada antes da função antiga e transfere os mesmo argumentos para ambas.
+	-- Extends a function, this function is ran before the old function and transfer the same arguments for both.
+	-- @param #string
+	-- @param #function
+	function SuperClass.ExtendFunctionBefore(Name, Func2)
+		local Func = SuperClass[Name]
+		SuperClass[Name] = function(...)
+			Func2(...)
+			Func(...)
 		end
 	end
 	
