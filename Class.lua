@@ -7,7 +7,7 @@
 	
 	The MIT License (MIT)
 
-	Copyright (c) 2015 Leandro Teixeira da Fonseca - leandro-456@live.com - playgunlock.com
+	Copyright (c) 2016 Leandro Teixeira da Fonseca - leandro-456@live.com - playgunlock.com
 
 	Permission is hereby granted, free of charge, to any person obtaining a copy
 	of this software and associated documentation files (the "Software"), to deal
@@ -31,6 +31,9 @@
 local Class = {}
 
 local Vector2 = Vector2
+local Vector3 = Vector3
+local Matrix44 = Matrix44
+local WhiteColor = {1, 1, 1, 1}
 
 local Type = type or Type
 local Pairs = pairs or Pairs
@@ -95,7 +98,7 @@ function Class.New(Name)
 	-- Initializes the values of an object. (Note: This function might not be overrided, use Class.PostInit instead, or Extend.)
 	function SuperClass.Init(Object, ...)
 		for Key, Value in Pairs(Object.InitValues) do
-			if Object.InitTypes[Key] == "vector2" or Object.InitTypes[Key] == "vector3" or Object.InitTypes[Key] == "color" then
+			if Object.InitTypes[Key] == "vector2" or Object.InitTypes[Key] == "vector3" then
 				Object[Key] = Value:Copy()
 			elseif Object.InitTypes[Key] == "table" then
 				Object[Key] = {}
@@ -110,6 +113,8 @@ function Class.New(Name)
 						Object[Key][Key2] = Value2
 					end
 				end
+			elseif Object.InitTypes[Key] == "color" then
+				Object.InitTypes[Key] = {1, 1, 1, 1}
 			else
 				Object[Key] = Value
 			end
@@ -177,9 +182,13 @@ function Class.New(Name)
 		elseif ValueType == "vector3" then
 			SuperClass.InitValues[Name] = Value or Vector3.Zero()
 			SuperClass.InitTypes[Name] = ValueType
+			
+		elseif ValueType == "matrix44" then
+			SuperClass.InitValues[Name] = Value or Matrix44.New()
+			SuperClass.InitTypes[Name] = ValueType
 		
 		elseif ValueType == "color" then
-			SuperClass.InitValues[Name] = Value or Color2.White()
+			SuperClass.InitValues[Name] = Value or WhiteColor
 			SuperClass.InitTypes[Name] = ValueType
 			
 		elseif ValueType == "table" then
@@ -252,7 +261,7 @@ function Class.New(Name)
 			SuperClass.InitTypes[Key] = Class2.InitTypes[Key]
 		end
 		for Key, Value in Pairs(Class2) do
-			if Type(Key) == "string" and Key:Substring(1, 2) ~= "__" then
+			if Type(Key) == "string" and Key:sub(1, 2) ~= "__" then
 				SuperClass[Key] = SuperClass[Key] or Value
 			end
 		end
