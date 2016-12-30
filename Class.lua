@@ -82,9 +82,7 @@ function Class.New(Name)
 	-- Cria um novo objeto utilizando a classe.
 	-- Create a new object using a following class.
 	function SuperClass.New(Arg1, Arg2, Arg3, Arg4, Arg5, Arg6)
-		local Object = {}
-		
-		Object = SetMetatable(Object, SuperClass)
+		local Object = SetMetatable({}, SuperClass)
 		
 		for Key = 1, #Object.InitValues do
 			local Value = Object.InitValues[Key]
@@ -248,10 +246,26 @@ function Class.New(Name)
 	-- Inherits the functions and properties from a different class.
 	function SuperClass.Inherit(Class2)
 		for Key = 1, #Class2.InitValues do
+			local Found = false
+			
 			local Value = Class2.InitValues[Key]
-			local InitValue = {Value[1], Value[2], Value[3]}
-			SuperClass.InitValues[#SuperClass.InitValues + 1] = InitValue
-			SuperClass.InitValuesByName[Value[1]] = InitValue
+			
+			for I = 1, #SuperClass.InitValues do
+				local ValueCompare = SuperClass.InitValues[I]
+				if ValueCompare[1] == Value[1] then
+					ValueCompare[2] = Value[2]
+					ValueCompare[3] = Value[3]
+					
+					Found = true
+					break
+				end
+			end
+			
+			if not Found then
+				local InitValue = {Value[1], Value[2], Value[3]}
+				SuperClass.InitValues[#SuperClass.InitValues + 1] = InitValue
+				SuperClass.InitValuesByName[Value[1]] = InitValue
+			end
 		end
 		
 		for Key, Value in Pairs(Class2) do
@@ -309,9 +323,9 @@ function Class.New(Name)
 	-- @param #function
 	function SuperClass.ExtendFunction(Name, Func2)
 		local Func = SuperClass[Name]
-		SuperClass[Name] = function(...)
-			Func(...)
-			Func2(...)
+		SuperClass[Name] = function(Object, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6)
+			Func(Object, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6)
+			Func2(Object, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6)
 		end
 	end
 	
@@ -322,9 +336,9 @@ function Class.New(Name)
 	-- @param #function
 	function SuperClass.ExtendFunctionBefore(Name, Func2)
 		local Func = SuperClass[Name]
-		SuperClass[Name] = function(...)
-			Func2(...)
-			Func(...)
+		SuperClass[Name] = function(Object, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6)
+			Func2(Object, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6)
+			Func(Object, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6)
 		end
 	end
 	
