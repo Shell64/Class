@@ -31,12 +31,12 @@
 local Class = {}
 
 local Vector2 = Vector2
-local Vector3 = Vector3
+
 local Matrix44 = Matrix44
 local WhiteColor = {R = 1, G = 1, B = 1, A = 1}
 
 local Type = type or Type
-local IteratePairs = ipairs or IteratePairs
+
 local Pairs = pairs or Pairs
 local ToString = tostring or ToString
 local SetMetatable = setmetatable or SetMetatable
@@ -67,7 +67,7 @@ function Class.New(Name)
 	----------------------------------------------------------------------------------
 	-- Retorna o objeto classe do objeto
 	-- Return the class object from an object
-	function SuperClass.GetClass(Object)
+	function SuperClass.GetClass()
 		return SuperClass
 	end
 	
@@ -342,7 +342,7 @@ function Class.New(Name)
 		end
 	end
 	
-	function SuperClass.PostInit(Object, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6)
+	function SuperClass.PostInit()
 	
 	end
 	
